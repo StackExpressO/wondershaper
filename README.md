@@ -23,6 +23,17 @@ simply run:
 
         sudo make install
 
+Install init script
+--------------
+
+sudo install -o root -g root -Dm755 init-script/wondershaper /etc/init.d/wondershaper
+
+Once you have installed that, you can set it to start automatically on boot with:
+
+sudo update-rc.d wondershaper defaults
+sudo update-rc.d wondershaper enable
+
+
 Usage
 --------------
 
