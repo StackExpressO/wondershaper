@@ -41,6 +41,8 @@ USPEED=
 IFACE=
 MODE=
 
+USE_PRESET="no"
+
 while getopts hd:u:a:pcs o
 do	case "$o" in
 	h)	usage
@@ -48,7 +50,7 @@ do	case "$o" in
 	d)	DSPEED=$OPTARG;;
 	u)      USPEED=$OPTARG;;
 	a)      IFACE=$OPTARG;;
-	p)      MODE="presets";;
+	p)      USE_PRESET="yes";;
 	c)      MODE="clear";;
 	s)      MODE="status";;
 	[?])	usage
@@ -56,7 +58,7 @@ do	case "$o" in
 	esac
 done
 
-if [ "$MODE" = "presets" ]
+if [ "$USE_PRESET" = "yes" ]
 then
     if [ -f /etc/conf.d/wondershaper.conf ]
     then
@@ -213,4 +215,3 @@ tc qdisc add dev $IFACE handle ffff: ingress
 
 tc filter add dev $IFACE parent ffff: protocol ip prio 50 u32 match ip src \
    0.0.0.0/0 police rate ${DSPEED}kbit burst 30k drop flowid :1
-
