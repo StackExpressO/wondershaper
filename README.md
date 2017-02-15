@@ -33,6 +33,10 @@ Once you have installed that, you can set it to start automatically on boot with
 sudo update-rc.d wondershaper defaults
 sudo update-rc.d wondershaper enable
 
+Or if your system don't have update-rc.d command
+
+sudo chkconfig wondershaper on
+
 
 Usage
 --------------
